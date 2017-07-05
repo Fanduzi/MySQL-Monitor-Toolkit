@@ -2,7 +2,7 @@ mysqladmin -umysql -pmysql -S /data/mysqldata/3306/mysql.sock  -r -i 1 extended-
 awk -F"|" \
 "BEGIN{ count=0; }"\
 '{ if($2 ~ /Variable_name/ && ((++count)%20 == 1)){\
-    print "----------|---------|--- MySQL Command Status --|----- Innodb row operation ----|-- Buffer Pool Read --";\
+    print "----------|---------|-----------------------|---------------------|--- MySQL Command Status --|----- Innodb row operation ----|-- Buffer Pool Read --|";\
     print "---Time---|---QPS---|---Threads_connected---|---Threads_running---|select insert update delete|  read inserted updated deleted|   logical    physical|";\
 }\
 else if ($2 ~ /Threads_connected/){Threads_connected=$3;}\
